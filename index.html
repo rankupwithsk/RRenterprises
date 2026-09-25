@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR Enterprise | Luxury Architectural Structures</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-color: #F9F9F7;
+            --text-main: #1A1A1A;
+            --text-light: #555555;
+            --gold-accent: #C5A059;
+            --gold-hover: #A68542;
+            --white: #FFFFFF;
+            --border-color: #E5E5E5;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .brand {
+            color: var(--gold-accent);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            color: var(--white);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--gold-accent); }
+        
+        .social-nav a {
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            transition: var(--transition);
+        }
+        .social-nav a:hover { color: var(--white); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            margin-top: 70px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .btn-solid {
+            background-color: var(--gold-accent);
+            color: var(--text-main);
+            border: 1px solid var(--gold-accent);
+        }
+        
+        .btn-solid:hover {
+            background-color: transparent;
+            color: var(--gold-accent);
+        }
+
+        /* --- VIDEO SHOWCASE SECTION --- */
+        .video-section {
+            padding: 5rem 5%;
+            background-color: var(--text-main);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+
+        .video-wrapper {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            position: relative;
+            border: 4px solid var(--gold-accent);
+            border-radius: 4px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- PRODUCT PORTFOLIO --- */
+        .portfolio {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: var(--text-main);
+        }
+
+        /* Tabs/Filters */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid var(--text-main);
+            padding: 12px 24px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--text-main);
+            color: var(--gold-accent);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            border-color: var(--gold-accent);
+        }
+
+        .card-img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .card-body {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-cat {
+            font-size: 0.75rem;
+            color: var(--gold-accent);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .specs {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .specs li {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 4px;
+        }
+
+        .price-hl {
+            font-weight: 600;
+            color: var(--text-main);
+            background: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 2px;
+        }
+
+        .card-action {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hide { display: none !important; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--text-main);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 5% 2rem;
+            border-top: 4px solid var(--gold-accent);
+        }
+
+        footer .brand {
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        footer p { color: #AAAAAA; font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 1rem; }
+            .nav-links { display: none; } /* Hide standard nav on small mobile */
+            .hero { margin-top: 100px; height: 60vh; }
+            .tabs { flex-direction: column; padding: 0 20px; }
+            .video-section { padding: 3rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand">
+            <i class="fa-solid fa-gem"></i> RR ENTERPRISE
+        </div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#showcase">Showcase</a>
+            <a href="#products">Collections</a>
+        </nav>
+        <div class="social-nav">
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/917009091660" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Strength. Style. Signature.</h1>
+        <p>Premium Architectural Detailing. Manufacturing exquisite Cast Iron structures, GFRC moldings, and seamless Modern Aesthetics for elite interiors.</p>
+        <a href="#products" class="btn btn-solid">View Portfolio</a>
+    </section>
+
+    <!-- VIDEO SHOWCASE -->
+    <section id="showcase" class="video-section">
+        <h2>Experience The Luxury</h2>
+        <p>Witness the flawless integration of our premium moldings, panels, and structural elements in high-end living spaces.</p>
+        <div class="video-wrapper">
+            <!-- 
+                DEVELOPER NOTE: Replace 'your-video-file.mp4' below with the actual name of your video file 
+                (e.g., 'ScreenRecording.mp4'). Ensure the video file is uploaded to the same folder as this index.html file on GitHub.
+            -->
+            <video autoplay loop muted playsinline controls>
+                <source src="your-video-file.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="portfolio">
+        <h2 class="section-title">Signature Collections</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-target="all">All Items</button>
+            <button class="tab-btn" data-target="luxury">Luxury Structure</button>
+            <button class="tab-btn" data-target="modern">Modern Aesthetics</button>
+        </div>
+
+        <div class="grid">
+            
+            <!-- Item 1: GRG Pillar -->
+            <div class="card" data-category="luxury">
+                <img src="https://images.unsplash.com/photo-1577985043696-8bd54d9f093f?auto=format&fit=crop&w=800&q=80" alt="GRG Pillar" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Luxury Structure</div>
+                    <h3 class="card-title">Classic GRG Pillar</h3>
+                    <ul class="specs">
+                        <li><span>Material:</span> <span>Premium GRG</span></li>
+                        <li><span>Height:</span> <span>101 Inch / 2480 mm</span></li>
+                        <li><span>Width:</span> <span>10.5 Inch</span></li>
+                        <li><span>Benefit:</span> <span>Lightweight & High Strength</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%20GRG%20Pillar" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Item 2: Cast Iron Fence -->
+            <div class="card" data-category="luxury">
+                <img src="https://images.unsplash.com/photo-1603812232938-1a5c68f8be78?auto=format&fit=crop&w=800&q=80" alt="Cast Iron Fence" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Luxury Structure</div>
+                    <h3 class="card-title">Cast Iron Wall Fence</h3>
+                    <ul class="specs">
+                        <li><span>Height:</span> <span>51 Inch</span></li>
+                        <li><span>Width:</span> <span>15 Inch</span></li>
+                        <li><span>Weight:</span> <span>37 kg</span></li>
+                        <li><span>Durability:</span> <span>Weather Resistant</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%20Cast%20Iron%20Wall%20Fence" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Item 3: Cast Iron Railing -->
+            <div class="card" data-category="luxury">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Balcony Railing" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Luxury Structure</div>
+                    <h3 class="card-title">Balcony Railing</h3>
+                    <ul class="specs">
+                        <li><span>Height:</span> <span>34 Inch</span></li>
+                        <li><span>Width:</span> <span>13 Inch</span></li>
+                        <li><span>Weight Range:</span> <span>9 - 210 kg</span></li>
+                        <li><span>Pricing:</span> <span class="price-hl">150/- per kg</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%20Balcony%20Railing" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Item 4: Designer Panels -->
+            <div class="card" data-category="modern">
+                <img src="https://images.unsplash.com/photo-1615800098779-1be32e60cca3?auto=format&fit=crop&w=800&q=80" alt="Designer Panels" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Modern Aesthetics</div>
+                    <h3 class="card-title">3D Designer Wall Panels</h3>
+                    <ul class="specs">
+                        <li><span>Protection:</span> <span>Fire & Moisture Resistant</span></li>
+                        <li><span>Size 20" x 20":</span> <span class="price-hl">420/- per pcs</span></li>
+                        <li><span>Size 2ft x 2ft:</span> <span class="price-hl">480/- per pcs</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%203D%20Designer%20Wall%20Panels" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Item 5: GRG Molding -->
+            <div class="card" data-category="modern">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="GRG Molding" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Modern Aesthetics</div>
+                    <h3 class="card-title">Custom GRG Molding</h3>
+                    <ul class="specs">
+                        <li><span>Standard:</span> <span>6 Inch x 96 Inch</span></li>
+                        <li><span>Profile Range:</span> <span>18 to 33 Inch</span></li>
+                        <li><span>Pricing:</span> <span class="price-hl">100/- per Inch</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%20GRG%20Molding" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+            <!-- Item 6: GFRC Molding -->
+            <div class="card" data-category="modern">
+                <img src="https://images.unsplash.com/photo-1599619351208-3e6c839d6828?auto=format&fit=crop&w=800&q=80" alt="GFRC Molding" class="card-img">
+                <div class="card-body">
+                    <div class="card-cat">Modern Aesthetics</div>
+                    <h3 class="card-title">Custom GFRC Molding</h3>
+                    <ul class="specs">
+                        <li><span>Strength:</span> <span>Highly Durable</span></li>
+                        <li><span>Resistance:</span> <span>Weather Resistant</span></li>
+                        <li><span>Weight:</span> <span>Lightweight & Long Lasting</span></li>
+                    </ul>
+                    <a href="https://wa.me/917009091660?text=I'm%20interested%20in%20the%20GFRC%20Molding" class="btn btn-solid card-action"><i class="fa-brands fa-whatsapp"></i> Get Quote</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="brand">RR ENTERPRISE</div>
+        <p>Golf Link, Humaran Road, Ludhiana PB 141001</p>
+        <p>Contact: 8054127718, 7009091660</p>
+        
+        <div style="margin-top: 1.5rem;">
+            <a href="https://instagram.com" target="_blank" style="color: var(--gold-accent); font-size: 1.8rem; margin: 0 10px;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/917009091660" target="_blank" style="color: var(--gold-accent); font-size: 1.8rem; margin: 0 10px;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        
+        <p style="margin-top: 2rem; font-size: 0.8rem; letter-spacing: 1px;">&copy; 2026 RR Enterprise. All Rights Reserved.</p>
+    </footer>
+
+    <!-- SCRIPT FOR TABS -->
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const cards = document.querySelectorAll('.card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Manage active state
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Filter logic
+                const target = tab.getAttribute('data-target');
+                cards.forEach(card => {
+                    if (target === 'all' || card.getAttribute('data-category') === target) {
+                        card.classList.remove('hide');
+                    } else {
+                        card.classList.add('hide');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
